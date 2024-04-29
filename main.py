@@ -179,7 +179,7 @@ all_features = ['GDP', 'Family', 'Health', 'Generosity', 'Corruption', 'Freedom'
 features = ['Family', 'GDP', 'Health','Freedom', 'Corruption', 'Generosity']
 
 # Read the CSV file into a DataFrame
-df = pd.read_csv('2021.csv')
+df = pd.read_csv('datasets/2021.csv')
 
 df = df.drop(df.index[-1])
 
@@ -209,24 +209,24 @@ for i in clusters:
     # plot_countries_on_map(clusters[i])
     correlation_coefficients(df, features, clusters[i])
 
-# mse_values = []
-# for i in models:
-#     model, mse, r2 = train_linear_regression(df, i[0])
+mse_values = []
+for i in models:
+    model, mse, r2 = train_linear_regression(df, i[0])
 
-#     # Map coefficients to labels
-#     print(model.coef_)
-#     print(model.intercept_)
-#     print(r2)
-#     print(mse)
-#     mse_values.append(mse)
+    # Map coefficients to labels
+    print(model.coef_)
+    print(model.intercept_)
+    print(r2)
+    print(mse)
+    mse_values.append(mse)
 
-# plt.figure(figsize=(10, 6))
-# plt.bar(range(1, len(models) + 1), mse_values, tick_label=[f'{mod[1]} model' for mod in models])
-# plt.xticks(rotation=45, ha='right')
-# plt.title('Performance Comparison of Multiple Regression Models')
-# plt.xlabel('Model')
-# plt.ylabel('Mean Squared Error (MSE)')
-# plt.show()
+plt.figure(figsize=(10, 6))
+plt.bar(range(1, len(models) + 1), mse_values, tick_label=[f'{mod[1]} model' for mod in models])
+plt.xticks(rotation=45, ha='right')
+plt.title('Performance Comparison of Multiple Regression Models')
+plt.xlabel('Model')
+plt.ylabel('Mean Squared Error (MSE)')
+plt.show()
 
 # %%
 
