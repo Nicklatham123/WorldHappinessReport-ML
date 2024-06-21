@@ -173,7 +173,7 @@ def visualize_kmeans_results(data, selected_features, n_clusters=3):
 all_features = ['GDP', 'Family', 'Health', 'Generosity', 'Corruption', 'Freedom']
 features = ['Family', 'GDP', 'Health','Freedom', 'Corruption', 'Generosity']
 
-# Read the CSV file into a DataFrame
+# Read CSV file
 df = pd.read_csv('datasets/2021.csv')
 
 df = df.drop(df.index[-1])
@@ -200,8 +200,6 @@ models = [
 clusters = visualize_kmeans_results(df, all_features, n_clusters=3)
 
 for i in clusters:
-    # print(clusters[i])
-    # plot_countries_on_map(clusters[i])
     correlation_coefficients(df, features, clusters[i])
 
 mse_values = []
